@@ -26,7 +26,6 @@ jobs:
 #        run: |
 #          dd if=/dev/zero of=/dev/shm/fill bs=1k count=8096k
 
-
 # Build a Linux Kernel
 
       - name: free RAM
@@ -63,4 +62,3 @@ jobs:
           cd linux.git
           time make vmlinux -j$(nproc)
           du -h ./vmlinux
-          
