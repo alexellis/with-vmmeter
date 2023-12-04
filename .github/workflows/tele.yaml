@@ -14,6 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: Setup vmmeter
+        run: |
+          curl -sLS https://get.arkade.dev | sudo sh
+          arkade get crane
+          sudo mv $HOME/.arkade/bin/crane /usr/local/bin/
+
+          crane export ttl.sh/alexellis2/vmmeter:latest | tar -xvf - -C ./usr/local/bin
       - uses: self-actuated/vmmeter-action@master
         with:
           who-to-greet: alex
