@@ -25,3 +25,8 @@ jobs:
         with:
           who-to-greet: alex
 
+      - name: Use some RAM
+        run: |
+          dd if=/dev/zero of=/dev/shm/fill bs=1k count=1024k
+
+
