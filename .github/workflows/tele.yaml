@@ -17,7 +17,7 @@ jobs:
       - name: Setup vmmeter
         run: |
           curl -sLS https://get.arkade.dev | sudo sh
-          arkade get crane
+          arkade get crane --quiet
           sudo mv $HOME/.arkade/bin/crane /usr/local/bin/
 
           crane export ttl.sh/alexellis2/vmmeter:latest | tar -xvf - -C /usr/local/bin
