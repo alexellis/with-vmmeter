@@ -20,6 +20,7 @@ jobs:
           print-summary: false
       - name: Install vmmeter
         run: |
+          sudo chown -R $(whoami):$(whoami) /usr/local/bin
           crane export ttl.sh/alexellis2/vmmeter:latest | tar -xvf - -C /usr/local/bin
       - uses: self-actuated/vmmeter-action@master
   
