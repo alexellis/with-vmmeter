@@ -24,43 +24,43 @@ jobs:
           crane export ttl.sh/alexellis2/vmmeter:latest | tar -xvf - -C /usr/local/bin
       - uses: self-actuated/vmmeter-action@master
   
-      - name: Use some RAM
-        run: |
-          dd if=/dev/zero of=/dev/shm/fill bs=1k count=1024k
+      # - name: Use some RAM
+      #   run: |
+      #     dd if=/dev/zero of=/dev/shm/fill bs=1k count=1024k
 
 # Build a Linux Kernel
 
-      # - name: free RAM
-      #   run: free -h
-      # - name: List CPUs
-      #   run: nproc
-      # - name: get build toolchain
-      #   run: |
-      #     sudo apt update -qy
-      #     sudo apt-get install -qy \
-      #       git \
-      #       build-essential \
-      #       fakeroot \
-      #       libncurses5-dev \
-      #       libssl-dev \
-      #       ccache \
-      #       bison \
-      #       flex \
-      #       libelf-dev \
-      #       dwarves \
-      #       bc
-      # - name: clone linux
-      #   run: |
-      #     time git clone https://github.com/torvalds/linux.git linux.git --depth=1 --branch v6.0
-      # - name: make config
-      #   run: |
-      #     cd linux.git 
-      #     scripts/config --disable SYSTEM_TRUSTED_KEYS
-      #     scripts/config --disable SYSTEM_REVOCATION_KEYS
-      #     make oldconfig
+      - name: free RAM
+        run: free -h
+      - name: List CPUs
+        run: nproc
+      - name: get build toolchain
+        run: |
+          sudo apt update -qy
+          sudo apt-get install -qy \
+            git \
+            build-essential \
+            fakeroot \
+            libncurses5-dev \
+            libssl-dev \
+            ccache \
+            bison \
+            flex \
+            libelf-dev \
+            dwarves \
+            bc
+      - name: clone linux
+        run: |
+          time git clone https://github.com/torvalds/linux.git linux.git --depth=1 --branch v6.0
+      - name: make config
+        run: |
+          cd linux.git 
+          scripts/config --disable SYSTEM_TRUSTED_KEYS
+          scripts/config --disable SYSTEM_REVOCATION_KEYS
+          make oldconfig
 
-      # - name: Make vmlinux
-      #   run: |
-      #     cd linux.git
-      #     time make vmlinux -j$(nproc)
-      #     du -h ./vmlinux
+      - name: Make vmlinux
+        run: |
+          cd linux.git
+          time make vmlinux -j$(nproc)
+          du -h ./vmlinux
