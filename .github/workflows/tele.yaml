@@ -27,6 +27,6 @@ jobs:
 
       - name: Use some RAM
         run: |
-          dd if=/dev/zero of=/dev/shm/fill bs=1k count=1024k
+          dd if=/dev/zero of=/dev/shm/fill bs=1k count=8096k
 
 
