@@ -1,0 +1,17 @@
+name: Tele
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - master
+
+jobs:
+  tele:
+    name: tele
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: self-actuated/vmmeter-action@master
